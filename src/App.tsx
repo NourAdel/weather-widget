@@ -1,14 +1,16 @@
-import { ThemeProvider } from "styled-components";
-import { AppContainer, ContentContainer } from "./styledComponent.ts";
-import { theme } from "./styledComponent.ts/theme";
+import {
+  AppContainer,
+  ContentContainer,
+  InputField,
+} from "./styledComponent.ts";
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <AppContainer>
-        <ContentContainer>Weather!</ContentContainer>
-      </AppContainer>
-    </ThemeProvider>
+    <AppContainer>
+      <ContentContainer>
+        <InputField />
+      </ContentContainer>
+    </AppContainer>
   );
 }
 

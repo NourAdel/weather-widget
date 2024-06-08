@@ -11,19 +11,38 @@ export const AppContainer = styled.div`
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
+  height: 100vh;
+  overflow: hidden;
 `;
 
 export const ContentContainer = styled.div`
   backdrop-filter: blur(5px);
+  height: 100%;
   width: 100%;
-  height: 100vh;
   display: flex;
   align-items: center;
   flex-direction: column;
   color: ${(props) => props.theme.text_color};
-  padding-top: 4rem;
+  padding-top: 6rem;
 `;
 
 export const InputField = styled.input`
-  width: 40%;
+  outline: none;
+  border: none;
+  width: 30%;
+  height: 40px;
+  padding: 10px 14px;
+  box-sizing: border-box;
+  border-radius: 1rem;
+  min-width: 200px;
+  font-size: 1rem;
+  font-family: "Ubuntu";
+  color: ${(props) => props.theme.input_color};
+  ::placeholder {
+    color: ${(props) => props.theme.placeholder_color};
+  }
+  &:focus {
+    box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05),
+      0px 0px 0px 4px rgba(158, 119, 237, 0.24);
+  }
 `;

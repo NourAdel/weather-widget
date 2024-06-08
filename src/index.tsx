@@ -1,14 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./styledComponent.ts/theme";
+import { WeatherProvider } from "./hooks/useWeather";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <WeatherProvider>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </WeatherProvider>
   </React.StrictMode>
 );
 
