@@ -15,6 +15,8 @@ interface WeatherContextProps {
   setUnit: (unit: "metric" | "imperial") => void;
   city: string;
   setCity: (city: string) => void;
+  error: string;
+  setError: (error: string) => void;
 }
 
 const WeatherContext = createContext<WeatherContextProps | undefined>(
@@ -37,23 +39,28 @@ export const WeatherProvider: React.FC<{ children: ReactNode }> = ({
   const [weather, setWeather] = useState<IWeather | null>(null);
   const [city, setCity] = useState<string>("");
   const [unit, setUnit] = useState<"metric" | "imperial">("metric");
+  const [error, setError] = useState<string>("");
 
   const fetchWeather = async () => {
-    if (city) {
-      try {
-        const response = await apiClient.get(
-          `weather?q=${city}&units=metric&APPID=816f698aa8247668420fa9b43dfd7871`
-        );
-        setWeather(response.data);
-      } catch (error) {
-        console.error(error);
-      }
+    try {
+      const response = await apiClient.get(
+        `weather?q=${city}&units=metric&APPID=fba9dbcc5bc2744513b5eb2ba363b782`
+      );
+      setWeather(response.data);
+    } catch (error) {
+      setError("City not found");
     }
   };
 
   useEffect(() => {
     if (city) {
-      fetchWeather();
+      const throttleTimer = setTimeout(() => {
+        fetchWeather();
+      }, 1000);
+
+      return () => {
+        clearTimeout(throttleTimer);
+      };
     }
   }, [city]);
 
@@ -64,6 +71,8 @@ export const WeatherProvider: React.FC<{ children: ReactNode }> = ({
     setCity,
     unit,
     setUnit,
+    error,
+    setError,
   };
 
   return (

@@ -1,15 +1,25 @@
-import React, { ChangeEvent, useState } from "react";
-import { InputField } from "../styledComponent.ts";
+import { ChangeEvent } from "react";
+import { ErrorMessage, InputField } from "../styledComponent.ts";
+import { useWeather } from "../hooks/useWeather";
 
+const Input = () => {
+  const { city, setCity, error, setError } = useWeather();
 
-
-const Input  = () => {
-    const [value, setValue] = useState("");
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-  };
-
-  return <InputField placeholder="Search with city name.."  type="text" value={value} onChange={handleInputChange} />;
+  return (
+    <>
+      <InputField
+        placeholder="Search with city name.."
+        type="text"
+        value={city}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+          setCity(e.target.value);
+        }}
+        onFocus={() => setError("")}
+        error={!!error}
+      />
+      {error && <ErrorMessage>{error}</ErrorMessage>}
+    </>
+  );
 };
 
 export default Input;

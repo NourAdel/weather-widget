@@ -1,14 +1,11 @@
-import {
-  AppContainer,
-  ContentContainer,
-  InputField,
-} from "./styledComponent.ts";
+import Input from "./components/Input";
+import { AppContainer, ContentContainer } from "./styledComponent.ts";
 
 function App() {
   return (
     <AppContainer>
       <ContentContainer>
-        <InputField />
+        <Input />
       </ContentContainer>
     </AppContainer>
   );
