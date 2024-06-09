@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./theme";
 import { WeatherProvider } from "./hooks/useWeather";
+import { RootRouter } from "./routes";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -13,7 +13,7 @@ root.render(
   <React.StrictMode>
     <WeatherProvider>
       <ThemeProvider theme={theme}>
-        <App />
+        <RootRouter />
       </ThemeProvider>
     </WeatherProvider>
   </React.StrictMode>
