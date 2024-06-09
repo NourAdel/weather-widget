@@ -1,13 +1,13 @@
-import Input from "./components/Input";
-import { AppContainer, ContentContainer } from "./styledComponent.ts";
+import AppBackground from "./components/AppBackground";
+import Input from "./components/CityInput";
+import WeatherDetailsCard from "./components/WeatherDetailsCard";
 
 function App() {
   return (
-    <AppContainer>
-      <ContentContainer>
-        <Input />
-      </ContentContainer>
-    </AppContainer>
+    <AppBackground>
+      <Input />
+      <WeatherDetailsCard />
+    </AppBackground>
   );
 }
 

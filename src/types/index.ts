@@ -1,9 +1,10 @@
 export interface IWeather {
   weather: {
+    id: number;
     main: string;
     description: string;
     icon: string;
-  };
+  }[];
   main: {
     temp: number;
     feels_like: number;
@@ -15,9 +16,5 @@ export interface IWeather {
     speed: number;
     deg: number;
   };
-}
-
-export interface GetWeatherDataParams {
-  q: string;
-  units: string;
+  name: string;
 }
