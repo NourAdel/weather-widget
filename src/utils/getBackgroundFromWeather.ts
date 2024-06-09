@@ -12,9 +12,9 @@ export const getBackgroundFromWeather = (weather: IWeather) => {
       ? "rain"
       : id === "6"
       ? "snow"
-      : id === "7" || id === "8"
+      : id === "7" || weather.weather[0].id.toString() === "800"
       ? "clear"
-      : "clouds";
+      : "cloud";
 
   const imgName =
     weatherType === "thunder" ? "thunder" : `${dayPeriod}-${weatherType}`;

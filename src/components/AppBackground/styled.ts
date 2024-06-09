@@ -22,6 +22,8 @@ export const AppContainer = styled.div<{ bg: string }>`
         return `background-image: url(${require("../../images/night-cloud.jpg")})`;
       case Backgrounds.night_snow:
         return `background-image: url(${require("../../images/night-snow.jpg")})`;
+      default:
+        return `background-image: url(${require("../../images/background.png")})`;
     }
   }};
   background-size: cover;
@@ -29,6 +31,7 @@ export const AppContainer = styled.div<{ bg: string }>`
   background-repeat: no-repeat;
   height: 100vh;
   overflow: hidden;
+  transition: background-image 1s ease-in-out;
 `;
 
 export const ContentContainer = styled.div<{ bg: string }>`

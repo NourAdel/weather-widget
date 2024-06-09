@@ -1,14 +1,7 @@
-import React, {
-  ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import React, { ReactNode, createContext, useContext, useState } from "react";
 import { IWeather } from "../types";
 import { apiClient } from "../apis/apiClient";
 import { getBackgroundFromWeather } from "../utils/getBackgroundFromWeather";
-import { Backgrounds } from "../constants";
 
 interface WeatherContextProps {
   weather: IWeather | null;
@@ -20,6 +13,7 @@ interface WeatherContextProps {
   error: string;
   setError: (error: string) => void;
   background: string;
+  fetchWeather: () => void;
 }
 
 const WeatherContext = createContext<WeatherContextProps | undefined>(
@@ -43,7 +37,7 @@ export const WeatherProvider: React.FC<{ children: ReactNode }> = ({
   const [city, setCity] = useState<string>("");
   const [unit, setUnit] = useState<"metric" | "imperial">("metric");
   const [error, setError] = useState<string>("");
-  const [background, setBackground] = useState<string>(Backgrounds.day_snow);
+  const [background, setBackground] = useState<string>("");
 
   const fetchWeather = async () => {
     try {
@@ -57,18 +51,6 @@ export const WeatherProvider: React.FC<{ children: ReactNode }> = ({
     }
   };
 
-  useEffect(() => {
-    if (city) {
-      const throttleTimer = setTimeout(() => {
-        fetchWeather();
-      }, 1000);
-
-      return () => {
-        clearTimeout(throttleTimer);
-      };
-    }
-  }, [city]);
-
   const contextValue: WeatherContextProps = {
     weather,
     setWeather,
@@ -79,6 +61,7 @@ export const WeatherProvider: React.FC<{ children: ReactNode }> = ({
     error,
     setError,
     background,
+    fetchWeather,
   };
 
   return (
