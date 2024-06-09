@@ -9,7 +9,7 @@ const ErrorScreen: React.FC = () => {
       <ContentContainer>
         <Title>City not found</Title>
 
-        <HomeButton to="/">Go back</HomeButton>
+        <HomeButton to="/">Go to home</HomeButton>
       </ContentContainer>
     </HomeContainer>
   );

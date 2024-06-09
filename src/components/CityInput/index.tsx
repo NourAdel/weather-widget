@@ -1,6 +1,5 @@
 import { CSSProperties, ChangeEvent, useEffect, useState } from "react";
-import { ErrorMessage, Flex, InputField, SearchButton, Title } from "./styled";
-import { useWeather } from "../../hooks/useWeather";
+import { Flex, InputField, SearchButton, Title } from "./styled";
 import { useNavigate } from "react-router-dom";
 
 const Input = ({
@@ -10,7 +9,6 @@ const Input = ({
   title?: boolean;
   style?: CSSProperties;
 }) => {
-  const { error, setError } = useWeather();
   const [city, setCity] = useState("");
   const navigate = useNavigate();
 
@@ -36,8 +34,6 @@ const Input = ({
             onChange={(e: ChangeEvent<HTMLInputElement>) => {
               setCity(e.target.value);
             }}
-            onFocus={() => setError("")}
-            error={!!error}
             onKeyDown={onKeyPress}
           />
           <SearchButton
@@ -48,8 +44,6 @@ const Input = ({
             Search
           </SearchButton>
         </Flex>
-
-        {error && <ErrorMessage>{error}</ErrorMessage>}
       </div>
     </div>
   );

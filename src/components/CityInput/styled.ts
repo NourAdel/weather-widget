@@ -1,17 +1,6 @@
 import styled from "styled-components";
 
-export const ErrorMessage = styled.p`
-  color: ${(props) => props.theme.text_error};
-  font-size: 0.8rem;
-  margin-top: 0.5rem;
-  margin-left: 0.5rem;
-  font-family: "Ubuntu";
-  font-weight: 500;
-  text-align: left;
-  width: 30%;
-`;
-
-export const InputField = styled.input<{ error: boolean }>`
+export const InputField = styled.input`
   outline: none;
   border: none;
   width: 30%;
@@ -34,12 +23,6 @@ export const InputField = styled.input<{ error: boolean }>`
     box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05),
       0px 0px 0px 4px rgba(105, 105, 105, 0.24);
   }
-
-  ${(props) =>
-    props.error &&
-    `
-    border: 1px solid ${props.theme.border_error};
-  `};
 `;
 
 export const Title = styled.h1`

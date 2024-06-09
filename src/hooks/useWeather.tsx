@@ -6,8 +6,6 @@ interface WeatherContextProps {
   setWeather: (weather: IWeather) => void;
   unit: "metric" | "imperial";
   setUnit: (unit: "metric" | "imperial") => void;
-  error: string;
-  setError: (error: string) => void;
   background: string;
   setBackground: (background: string) => void;
 }
@@ -31,7 +29,6 @@ export const WeatherProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [weather, setWeather] = useState<IWeather | null>(null);
   const [unit, setUnit] = useState<"metric" | "imperial">("imperial");
-  const [error, setError] = useState<string>("");
   const [background, setBackground] = useState<string>("");
 
   const contextValue: WeatherContextProps = {
@@ -39,8 +36,6 @@ export const WeatherProvider: React.FC<{ children: ReactNode }> = ({
     setWeather,
     unit,
     setUnit,
-    error,
-    setError,
     background,
     setBackground,
   };
