@@ -32,7 +32,7 @@ export const WeatherProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [weather, setWeather] = useState<IWeather | null>(null);
-  const [unit, setUnit] = useState<"metric" | "imperial">("metric");
+  const [unit, setUnit] = useState<"metric" | "imperial">("imperial");
   const [error, setError] = useState<string>("");
   const [background, setBackground] = useState<string>("");
 
@@ -44,8 +44,6 @@ export const WeatherProvider: React.FC<{ children: ReactNode }> = ({
       setWeather(response.data);
       setBackground(getBackgroundFromWeather(response.data));
     } catch (error) {
-      debugger;
-
       setError("City not found");
     }
   };

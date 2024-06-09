@@ -10,7 +10,7 @@ const WeatherScreen: React.FC = () => {
 
   useEffect(() => {
     if (city) {
-      fetchWeather(city);
+      fetchWeather(city.replace(/-/g, " "));
     }
   }, [city]);
 

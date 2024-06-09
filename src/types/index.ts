@@ -12,6 +12,7 @@ export interface IWeather {
     temp_max: number;
     humidity: number;
   };
+  visibility: number;
   wind: {
     speed: number;
     deg: number;

@@ -32,22 +32,10 @@ export const AppContainer = styled.div<{ bg: string }>`
   height: 100vh;
   overflow: hidden;
   transition: background-image 1s ease-in-out;
-`;
-
-export const ContentContainer = styled.div<{ bg: string }>`
-  backdrop-filter: ${(props) =>
-    props.bg === Backgrounds.night_rain ||
-    props.bg === Backgrounds.night_clear ||
-    props.bg === Backgrounds.night_snow ||
-    props.bg === Backgrounds.day_snow
-      ? "blur(1px)"
-      : "blur(3px)"};
-  height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
   color: ${(props) => props.theme.text_color};
   padding-top: 6rem;
-  position: relative;
 `;
