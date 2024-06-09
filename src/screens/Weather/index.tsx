@@ -6,13 +6,13 @@ import { useWeather } from "../../hooks/useWeather";
 
 const WeatherScreen: React.FC = () => {
   const { city } = useParams<{ city: string }>();
-  const { fetchWeather } = useWeather();
+  const { fetchWeather, unit } = useWeather();
 
   useEffect(() => {
     if (city) {
       fetchWeather(city.replace(/-/g, " "));
     }
-  }, [city]);
+  }, [city, unit]);
 
   return (
     <AppBackground>

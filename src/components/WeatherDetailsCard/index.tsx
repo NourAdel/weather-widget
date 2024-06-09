@@ -3,11 +3,14 @@ import {
   CardContainer,
   CardHeader,
   CardIcon,
+  CardIconContainer,
   FlexColumn,
   FlexRow,
   FlexRowCenter,
   Subheader,
   Subtitle,
+  UnitsButton,
+  UnitsContainer,
   Value,
   ValueSpan,
 } from "./styled";
@@ -18,14 +21,16 @@ import VisibilityIcon from "../../images/icons/visibility.svg";
 import FeelsLikeIcon from "../../images/icons/feels-like.svg";
 
 const WeatherDetailsCard = () => {
-  const { weather } = useWeather();
+  const { weather, unit, setUnit } = useWeather();
   return weather ? (
     <CardContainer>
       <CardHeader>
-        <CardIcon
-          src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
-          alt="weather icon"
-        />
+        <CardIconContainer>
+          <CardIcon
+            src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+            alt="weather icon"
+          />
+        </CardIconContainer>
 
         <h2>{weather.name}</h2>
       </CardHeader>
@@ -34,7 +39,7 @@ const WeatherDetailsCard = () => {
 
         <Subtitle>
           <img src={TempIcon} alt="temperature-icon" width={20} height={20} />
-          {weather.main.temp} ˚ F
+          {weather.main.temp} {unit === "imperial" ? "˚ F" : "˚ C"}
         </Subtitle>
       </Subheader>
       <FlexRow>
@@ -44,7 +49,8 @@ const WeatherDetailsCard = () => {
             <p>Wind speed</p>
           </FlexRowCenter>
           <Value>
-            {weather.wind.speed} <ValueSpan>mph</ValueSpan>
+            {weather.wind.speed}{" "}
+            <ValueSpan>{unit === "imperial" ? "mph" : "kph"}</ValueSpan>
           </Value>
         </FlexColumn>
 
@@ -92,10 +98,27 @@ const WeatherDetailsCard = () => {
             <p>Feels like</p>
           </FlexRowCenter>
           <Value>
-            {weather.main.feels_like} <ValueSpan>˚F</ValueSpan>
+            {weather.main.feels_like}{" "}
+            <ValueSpan>{unit === "imperial" ? "˚ F" : "˚ C"}</ValueSpan>
           </Value>
         </FlexColumn>
       </FlexRow>
+      <UnitsContainer>
+        <UnitsButton
+          right={false}
+          selected={unit === "metric"}
+          onClick={() => setUnit("metric")}
+        >
+          Metric
+        </UnitsButton>
+        <UnitsButton
+          right={true}
+          selected={unit === "imperial"}
+          onClick={() => setUnit("imperial")}
+        >
+          Imperial
+        </UnitsButton>
+      </UnitsContainer>
     </CardContainer>
   ) : null;
 };
