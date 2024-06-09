@@ -32,3 +32,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 - Adding Favorite cities list, using local storage.
 - Animating the different backgrounds.
+- Adding a `.env` file with the api's user_id, and a `.env.example` file as well. 
