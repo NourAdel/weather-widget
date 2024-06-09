@@ -1,7 +1,5 @@
 import React, { ReactNode, createContext, useContext, useState } from "react";
 import { IWeather } from "../types";
-import { apiClient } from "../apis/apiClient";
-import { getBackgroundFromWeather } from "../utils/getBackgroundFromWeather";
 
 interface WeatherContextProps {
   weather: IWeather | null;
@@ -11,7 +9,7 @@ interface WeatherContextProps {
   error: string;
   setError: (error: string) => void;
   background: string;
-  fetchWeather: (city: string) => void;
+  setBackground: (background: string) => void;
 }
 
 const WeatherContext = createContext<WeatherContextProps | undefined>(
@@ -36,18 +34,6 @@ export const WeatherProvider: React.FC<{ children: ReactNode }> = ({
   const [error, setError] = useState<string>("");
   const [background, setBackground] = useState<string>("");
 
-  const fetchWeather = async (city: string) => {
-    try {
-      const response = await apiClient.get(
-        `weather?q=${city}&units=${unit}&APPID=fba9dbcc5bc2744513b5eb2ba363b782`
-      );
-      setWeather(response.data);
-      setBackground(getBackgroundFromWeather(response.data));
-    } catch (error) {
-      setError("City not found");
-    }
-  };
-
   const contextValue: WeatherContextProps = {
     weather,
     setWeather,
@@ -56,7 +42,7 @@ export const WeatherProvider: React.FC<{ children: ReactNode }> = ({
     error,
     setError,
     background,
-    fetchWeather,
+    setBackground,
   };
 
   return (

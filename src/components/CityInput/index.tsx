@@ -4,16 +4,16 @@ import { useWeather } from "../../hooks/useWeather";
 import { useNavigate } from "react-router-dom";
 
 const Input = () => {
-  const { error, setError, weather } = useWeather();
+  const { error, setError } = useWeather();
   const [city, setCity] = useState("");
   const navigate = useNavigate();
 
   const onKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      navigate(`/${city}`);
+      navigate(`/${city.replace(/ /g, "-")}`);
     }
   };
-  return !weather ? (
+  return (
     <>
       <Title>Check the weather in</Title>
       <div>
@@ -31,7 +31,7 @@ const Input = () => {
           />
           <SearchButton
             onClick={() => {
-              navigate(`/${city}`);
+              navigate(`/${city.replace(/ /g, "-")}`);
             }}
           >
             search
@@ -41,7 +41,7 @@ const Input = () => {
         {error && <ErrorMessage>{error}</ErrorMessage>}
       </div>
     </>
-  ) : null;
+  );
 };
 
 export default Input;

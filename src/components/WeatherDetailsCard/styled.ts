@@ -109,4 +109,5 @@ export const UnitsButton = styled.button<{ selected: boolean; right: boolean }>`
   width: 30%;
   min-width: 60px;
   cursor: pointer;
+  transition: background-color 0.3s linear;
 `;

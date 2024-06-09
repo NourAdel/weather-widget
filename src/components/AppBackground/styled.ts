@@ -37,5 +37,5 @@ export const AppContainer = styled.div<{ bg: string }>`
   align-items: center;
   flex-direction: column;
   color: ${(props) => props.theme.text_color};
-  padding-top: 6rem;
+  padding-top: 2rem;
 `;
