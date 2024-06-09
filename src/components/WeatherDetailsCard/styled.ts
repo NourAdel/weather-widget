@@ -18,7 +18,6 @@ export const CardHeader = styled.div`
   gap: 0.5rem;
   align-items: center;
   width: 100%;
-  justify-content: center;
 `;
 
 export const CardIcon = styled.img`
@@ -43,8 +42,7 @@ export const Subheader = styled.div`
   align-items: center;
 `;
 
-export const Subtitle = styled.h5`
-  margin-block: 0;
+export const Subtitle = styled.h4`
   display: flex;
   align-items: center;
 `;
@@ -53,7 +51,7 @@ export const FlexRow = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  justify-content: space-between;
+  gap: 4rem;
   width: 100%;
   margin-block: 1rem;
 `;
@@ -63,15 +61,14 @@ export const FlexRowCenter = styled.div`
   align-items: center;
   gap: 0.25rem;
   font-size: 0.5rem;
-  align-self: flex-end;
-  margin-inline-start: 0.3rem;
 `;
 export const FlexColumn = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   height: fit-content;
+  width: 90px;
 `;
 export const Value = styled.p`
   margin-block: 0;

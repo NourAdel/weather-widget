@@ -32,10 +32,13 @@ const WeatherDetailsCard = () => {
           />
         </CardIconContainer>
 
-        <h2>{weather.name}</h2>
+        <h1>{weather.name}</h1>
       </CardHeader>
       <Subheader>
-        <Subtitle>{weather.weather[0].description} </Subtitle>
+        <Subtitle>
+          {weather.weather[0].description.charAt(0).toUpperCase() +
+            weather.weather[0].description.slice(1)}
+        </Subtitle>
 
         <Subtitle>
           <img src={TempIcon} alt="temperature-icon" width={20} height={20} />

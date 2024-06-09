@@ -1,12 +1,22 @@
-import { ChangeEvent, useState } from "react";
+import { CSSProperties, ChangeEvent, useEffect, useState } from "react";
 import { ErrorMessage, Flex, InputField, SearchButton, Title } from "./styled";
 import { useWeather } from "../../hooks/useWeather";
 import { useNavigate } from "react-router-dom";
 
-const Input = () => {
+const Input = ({
+  title = true,
+  style,
+}: {
+  title?: boolean;
+  style?: CSSProperties;
+}) => {
   const { error, setError } = useWeather();
   const [city, setCity] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setCity("");
+  }, [navigate]);
 
   const onKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
@@ -14,12 +24,13 @@ const Input = () => {
     }
   };
   return (
-    <>
-      <Title>Check the weather in</Title>
+    <div style={style}>
+      {title && <Title>Check the weather in</Title>}
+
       <div>
         <Flex>
           <InputField
-            placeholder="enter city name"
+            placeholder={"Enter city name"}
             type="text"
             value={city}
             onChange={(e: ChangeEvent<HTMLInputElement>) => {
@@ -34,13 +45,13 @@ const Input = () => {
               navigate(`/${city.replace(/ /g, "-")}`);
             }}
           >
-            search
+            Search
           </SearchButton>
         </Flex>
 
         {error && <ErrorMessage>{error}</ErrorMessage>}
       </div>
-    </>
+    </div>
   );
 };
 

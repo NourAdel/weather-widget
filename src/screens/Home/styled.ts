@@ -14,4 +14,9 @@ export const HomeContainer = styled.div`
   flex-direction: column;
   color: ${(props) => props.theme.text_color};
   padding-top: 6rem;
+
+  @media screen and (max-width: 768px) {
+    padding-top: 0rem;
+    justify-content: center;
+  }
 `;

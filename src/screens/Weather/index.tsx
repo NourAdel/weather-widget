@@ -8,6 +8,7 @@ import { getBackgroundFromWeather } from "../../utils/getBackgroundFromWeather";
 import { HomeButton } from "../Error/styled";
 import { ButtonContainer, WeatherContainer } from "./styled";
 import HomeIcon from "../../images/icons/home.svg";
+import Input from "../../components/CityInput";
 
 const WeatherScreen: React.FC = () => {
   const { city } = useParams<{ city: string }>();
@@ -37,6 +38,7 @@ const WeatherScreen: React.FC = () => {
             <img src={HomeIcon} alt="home" width={30} height={30} />
           </HomeButton>
         </ButtonContainer>
+        <Input title={false} style={{ marginBottom: "1rem" }} />
         <WeatherDetailsCard />
       </WeatherContainer>
     </AppBackground>
